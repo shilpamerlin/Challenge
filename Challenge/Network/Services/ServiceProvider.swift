@@ -38,10 +38,9 @@ class ServiceProvider {
     }
     
     func postFavouriteProduct(request: URLRequest, isFavourite: Bool, completion: (Error?) -> Void) {
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        URLSession.shared.dataTask(with: request) { data, _, _ in
             guard let data = data else { return }
             print("POST to favourite endpoint done!! \(String(data: data, encoding: .utf8) ?? "")")
-            print("Error occured.. \(error!.localizedDescription)")
         }.resume()
     }
 }
