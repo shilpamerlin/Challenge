@@ -31,6 +31,7 @@ import Foundation
     }
 }
 
+/// Function that creates API request url 
  func createURLEndPoint(requestType: ProductEndPoint) -> URLRequest {
     let baseUrl = "https://demo5514996.mockable.io/"
     var urlRequest = URLRequest(url: URL(string: baseUrl.appending(requestType.path))!)

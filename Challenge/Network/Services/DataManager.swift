@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Class that manages the API responses based on requirements
 class DataManager {
     private let serviceProvider = ServiceProvider()
     public func fetchProducts(completion: @escaping ([Products]) -> Void) {
