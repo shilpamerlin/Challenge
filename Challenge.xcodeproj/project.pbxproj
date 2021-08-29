@@ -25,6 +25,7 @@
 		8DF1BDCB26DAAF1D006717DE /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1BDCA26DAAF1D006717DE /* ServiceProvider.swift */; };
 		8DF1BDD126DAAF54006717DE /* ProductEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1BDD026DAAF54006717DE /* ProductEndPoint.swift */; };
 		8DF1BDD626DBDC7B006717DE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1BDD526DBDC7B006717DE /* DataManager.swift */; };
+		8DF1BDD826DC1DFE006717DE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8DF1BDD726DC1DFE006717DE /* .swiftlint.yml */; };
 		F228BAB6E6F451ABA352F1D6 /* Pods_Challenge_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E6C59B5F629F7CA95AFCCC /* Pods_Challenge_ChallengeUITests.framework */; };
 		F48140E3F34A04A74261D835 /* Pods_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4388E6BD648A78D19D0259C /* Pods_ChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		8DF1BDCA26DAAF1D006717DE /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		8DF1BDD026DAAF54006717DE /* ProductEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEndPoint.swift; sourceTree = "<group>"; };
 		8DF1BDD526DBDC7B006717DE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		8DF1BDD726DC1DFE006717DE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		96E6C59B5F629F7CA95AFCCC /* Pods_Challenge_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1FED19A6F3C9E2A3543898 /* Pods-ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-ChallengeTests/Pods-ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		C4388E6BD648A78D19D0259C /* Pods_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 		8DF1BD7126D84289006717DE = {
 			isa = PBXGroup;
 			children = (
+				8DF1BDD726DC1DFE006717DE /* .swiftlint.yml */,
 				8DF1BD7C26D84289006717DE /* Challenge */,
 				8DF1BD9326D8428B006717DE /* ChallengeTests */,
 				8DF1BD9E26D8428B006717DE /* ChallengeUITests */,
@@ -368,6 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF1BDD826DC1DFE006717DE /* .swiftlint.yml in Resources */,
 				8DF1BD8A26D8428B006717DE /* LaunchScreen.storyboard in Resources */,
 				8DF1BD8726D8428B006717DE /* Assets.xcassets in Resources */,
 			);
@@ -427,8 +431,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		A979097DD1880C21FEACBC0F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

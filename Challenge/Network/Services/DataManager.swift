@@ -7,17 +7,17 @@
 
 import Foundation
 
-class DataManager{
+class DataManager {
     private let serviceProvider = ServiceProvider()
-    
-    public func fetchProducts(completion: @escaping ([Products])-> Void){
+    public func fetchProducts(completion: @escaping ([Products]) -> Void) {
         let request = createURLEndPoint(requestType: ProductEndPoint.listProducts)
-        serviceProvider.loadData(request: request, completionHandler: {(data:Results?) in
+        serviceProvider.loadData(request: request, completionHandler: {(data: Results?) in
             guard let productList = data else {return}
             completion(productList.hits)
         })
     }
-    public func makeProductFavorite(isFav: Bool){
+    
+    public func makeProductFavorite(isFav: Bool) {
         var request: ProductEndPoint?
         if isFav {
             request = ProductEndPoint.favourited
@@ -26,8 +26,8 @@ class DataManager{
         }
         let targetRequest = createURLEndPoint(requestType: request!)
         print("\n Favourite endpoint \(targetRequest) and HttpMethod is \(targetRequest.httpMethod!) ")
-        serviceProvider.postFavouriteProduct(request: (createURLEndPoint(requestType: request!)), isFavourite: !isFav) { error in
-            print("Error occured")
+        serviceProvider.postFavouriteProduct(request:
+                        (createURLEndPoint(requestType: request!)), isFavourite: !isFav) { _ in
         }
     }
 }

@@ -14,8 +14,9 @@ extension ProductListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCellModels
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductListVC.productCell) as! ProductCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductListVC.productCell) as! ProductCell 
         let cellModel = viewModel.getCellAtRow(indexPath: indexPath)
         cell.contentView.isUserInteractionEnabled = false
         cell.configureProductCell(cellModel: cellModel)

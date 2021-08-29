@@ -24,6 +24,7 @@ class ProductListVC: UIViewController {
         configureActivityIndicator()
         initViewModel()
     }
+    
     func configureTableView() {
         view.addSubview(productTblView)
         productTblView.rowHeight = 160
@@ -32,6 +33,7 @@ class ProductListVC: UIViewController {
         productTblView.register(ProductCell.self, forCellReuseIdentifier: ProductListVC.productCell)
         productTblView.pin(to: view)
     }
+    
     func configureActivityIndicator() {
         view.addSubview(activityIndicator)
         view.backgroundColor = .white
@@ -40,6 +42,7 @@ class ProductListVC: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
+    
     func initViewModel() {
         viewModel = ProductViewModel()
         viewModel.updatingStatus = { [weak self] () in
@@ -65,6 +68,7 @@ class ProductListVC: UIViewController {
         }
         viewModel.getApiData()
     }
+    
     func setUpSearchBar() {
         searchController.searchBar.showsCancelButton = false
         searchController.obscuresBackgroundDuringPresentation = false
@@ -91,6 +95,5 @@ extension ProductListVC: FavouriteProduct {
         viewModel.updateFavouriteStatus(indexPath: indexpath, complete: { [weak self] in
             self?.productTblView.reloadRows(at: [indexpath], with: .none)
         })
-       
     }
 }

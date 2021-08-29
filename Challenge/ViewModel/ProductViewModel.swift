@@ -29,12 +29,14 @@ class ProductViewModel {
             updatingStatus()
         }
     }
-    func getCellAtRow(indexPath: IndexPath) -> ProductCellModel {
-        return cellViewModels[indexPath.row]
-    }
    init(dataManager: DataManager = DataManager()) {
         self.dataManager = dataManager
     }
+    
+    func getCellAtRow(indexPath: IndexPath) -> ProductCellModel {
+        return cellViewModels[indexPath.row]
+    }
+    
     func getApiData() {
         self.isLoading = true
         dataManager.fetchProducts { items in
@@ -43,6 +45,7 @@ class ProductViewModel {
             self.isLoading = false
         }
     }
+    
     func processFetchedData(products: [Products]) {
         var cellModel = [ProductCellModel]()
         for product in products {
@@ -52,6 +55,7 @@ class ProductViewModel {
         self.cellViewModels = cellModel
         self.productArray = cellViewModels
     }
+    
     func searchProduct(searchText: String) {
         let searchString = searchText.lowercased()
         if searchText == "" {
@@ -68,11 +72,11 @@ class ProductViewModel {
             }
         }
     }
+    
     public func updateFavouriteStatus(indexPath: IndexPath, complete: (() -> Void)) {
         cellViewModels[indexPath.row].isFavourite = !cellViewModels[indexPath.row].isFavourite!
         let favValue = cellViewModels[indexPath.row].isFavourite
         dataManager.makeProductFavorite(isFav: !(favValue)!)
         complete()
-        
     }
 }

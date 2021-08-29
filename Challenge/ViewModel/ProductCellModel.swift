@@ -15,6 +15,7 @@ class ProductCellModel {
     let hasBadge: Bool?
     let badgeImageURL: String?
     var isFavourite: Bool?
+    
     init(with product: Products) {
         title = product.name
         productImage = product.mainImage

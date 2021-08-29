@@ -7,13 +7,10 @@
 
 import Foundation
 
-import Foundation
-
- enum ProductEndPoint{
+ enum ProductEndPoint {
     case listProducts
     case favourited
     case notFavourited
-    
     var method: String {
         switch self {
         case .listProducts:
@@ -28,13 +25,13 @@ import Foundation
         switch self {
         case .listProducts:
             return "products"
-        case .favourited,.notFavourited:
+        case .favourited, .notFavourited:
            return "favorites"
         }
     }
 }
 
- func createURLEndPoint(requestType: ProductEndPoint) -> URLRequest{
+ func createURLEndPoint(requestType: ProductEndPoint) -> URLRequest {
     let baseUrl = "https://demo5514996.mockable.io/"
     var urlRequest = URLRequest(url: URL(string: baseUrl.appending(requestType.path))!)
     urlRequest.httpMethod = requestType.method
