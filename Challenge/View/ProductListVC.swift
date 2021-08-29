@@ -14,7 +14,8 @@ class ProductListVC: UIViewController {
     static let productCell = "productCell"
     var viewModel: ProductViewModel = ProductViewModel()
     let searchController = UISearchController(searchResultsController: nil)
-    // MARK: - Life cycle
+    
+    // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Products"
@@ -87,9 +88,9 @@ extension ProductListVC: UISearchBarDelegate {
 extension ProductListVC: FavouriteProduct {
     func getIndexPath(cell: UITableViewCell) {
         guard let indexpath = productTblView.indexPath(for: cell) else { return }
-        viewModel.updateFavProduct(indexPath: indexpath, complete: { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.productTblView.reloadRows(at: [indexpath], with: .none)
+        viewModel.updateFavouriteStatus(indexPath: indexpath, complete: { [weak self] in
+            self?.productTblView.reloadRows(at: [indexpath], with: .none)
         })
+       
     }
 }

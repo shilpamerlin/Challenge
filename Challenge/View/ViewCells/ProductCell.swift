@@ -100,16 +100,7 @@ class ProductCell: UITableViewCell {
             favouriteButton.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
-    @objc func favouriteButtonTapped(_ sender: UIButton) {
-        if sender.isSelected {
-            favouriteButton.setImage(UIImage(named: "defaultFavourite"), for: .normal)
-        } else {
-            favouriteButton.setImage(UIImage(named: "favouriteActive"), for: .normal)
-        }
-        delegate?.getIndexPath(cell: self)
-    }
     func configureProductCell(cellModel: ProductCellModel) {
-        favouriteButton.setImage(cellModel.isFavourite! ? UIImage(named: "defaultFavourite")! : UIImage(named: "favouriteActive")!, for: .normal)
         titleLabel.text = cellModel.title
         productImageView.sd_setImage(with: URL(string: cellModel.productImage ?? ""), placeholderImage: UIImage(named: "defaultImage"))
         let listPrice = String(format: "%.2f", cellModel.listPrice!)
@@ -119,6 +110,16 @@ class ProductCell: UITableViewCell {
         let yourPrice = String(format: "%.2f", cellModel.yourPrice!)
         yourPriceLabel.text = "$\(yourPrice)"
         bestSellerBadgeImage.sd_setImage(with: URL(string: cellModel.badgeImageURL ?? ""), completed: nil)
+        favouriteButton.setImage(cellModel.isFavourite! ? UIImage(named: "defaultFavourite")! : UIImage(named: "favouriteActive")!, for: .normal)
+    }
+    
+    @objc func favouriteButtonTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            favouriteButton.setImage(UIImage(named: "defaultFavourite"), for: .normal)
+        } else {
+            favouriteButton.setImage(UIImage(named: "favouriteActive"), for: .normal)
+        }
+        delegate?.getIndexPath(cell: self)
     }
 }
 

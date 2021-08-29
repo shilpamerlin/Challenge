@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  ProductsModel.swift
 //  Challenge
 //
 //  Created by Shilpa Joy on 2021-08-26.

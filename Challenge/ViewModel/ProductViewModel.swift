@@ -8,14 +8,14 @@
 import Foundation
 
 class ProductViewModel {
+    
     // MARK: - Properties
     var products: [Products] = []
     var reloadTableViewClosure: (() -> Void) = {}
     var updatingStatus: (() -> Void) = {}
-    var complete: (() -> Void) = {}
     private var filteredArray = [ProductCellModel]()
     private var productArray = [ProductCellModel]()
-    var apiService: APIService
+    var dataManager: DataManager
     private var cellViewModels = [ProductCellModel]() {
         didSet {
             self.reloadTableViewClosure()
@@ -32,12 +32,12 @@ class ProductViewModel {
     func getCellAtRow(indexPath: IndexPath) -> ProductCellModel {
         return cellViewModels[indexPath.row]
     }
-   init(apiService: APIService = APIService()) {
-        self.apiService = apiService
+   init(dataManager: DataManager = DataManager()) {
+        self.dataManager = dataManager
     }
     func getApiData() {
         self.isLoading = true
-        apiService.fetchProducts { items in
+        dataManager.fetchProducts { items in
             self.products = items
             self.processFetchedData(products: items)
             self.isLoading = false
@@ -68,8 +68,11 @@ class ProductViewModel {
             }
         }
     }
-    public func updateFavProduct(indexPath: IndexPath, complete: (() -> Void)) {
+    public func updateFavouriteStatus(indexPath: IndexPath, complete: (() -> Void)) {
         cellViewModels[indexPath.row].isFavourite = !cellViewModels[indexPath.row].isFavourite!
+        let favValue = cellViewModels[indexPath.row].isFavourite
+        dataManager.makeProductFavorite(isFav: !(favValue)!)
         complete()
+        
     }
 }
