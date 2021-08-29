@@ -11,7 +11,7 @@
 * Added Activity Indicator to show content loading
 * TableView to list product details
 * Search bar for searching product
-* Favourite button to make product as 'favourite'
+* Favourite button to make product as 'favourite' and make corresponding changes in favorite endpoint
 ## PreRequisties
 * XCode: 12.4
 ## Screenshots
