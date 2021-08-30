@@ -13,7 +13,6 @@ class ProductViewModel {
     var products: [Products] = []
     var reloadTableViewClosure: (() -> Void) = {}
     var updatingStatus: (() -> Void) = {}
-    private var filteredArray = [ProductCellModel]()
     private var productArray = [ProductCellModel]()
     var dataManager: DataManager
     private var cellViewModels = [ProductCellModel]() {
@@ -59,18 +58,10 @@ class ProductViewModel {
     func searchProduct(searchText: String) {
         let searchString = searchText.lowercased()
         if searchText == "" {
-            if filteredArray.count != 0 {
-                self.cellViewModels = self.filteredArray
-            } else {
                 self.cellViewModels = productArray
-            }
         } else {
-            if  filteredArray.count !=  0 {
-                self.cellViewModels = self.filteredArray.filter({$0.title!.lowercased().contains(searchString)})
-            } else {
                 self.cellViewModels = productArray.filter({$0.title!.lowercased().contains(searchString)})
             }
-        }
     }
     
     public func updateFavouriteStatus(indexPath: IndexPath, complete: (() -> Void)) {

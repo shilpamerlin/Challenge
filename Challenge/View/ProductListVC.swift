@@ -15,7 +15,7 @@ class ProductListVC: UIViewController {
     var viewModel: ProductViewModel = ProductViewModel()
     let searchController = UISearchController(searchResultsController: nil)
     
-    // MARK: - Life cycle
+    // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Products"
